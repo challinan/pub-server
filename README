@@ -1,0 +1,5 @@
+edit .idl file
+
+../rti_connext_dds-5.2.3/bin/rtiddsgen -example x64Linux3gcc4.8.2 -replace -namespace pmd.idl
+
+make -f makefile_pmd_x64Linux3gcc4.8.2
