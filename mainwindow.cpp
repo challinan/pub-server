@@ -8,10 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	printf("MainWindow startup\n");
     ui->setupUi(this);
-    ui->myLabel->setText("Hello World");
+    ui->myLabel->setText("PMD Data Simulator");
 
 	// Start the listener	
-	PmdDatagen *ds = new PmdDatagen();
+	PmdDatagen *ds = new PmdDatagen(this);
 }
 
 MainWindow::~MainWindow()

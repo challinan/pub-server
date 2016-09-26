@@ -57,6 +57,8 @@ private:
 	int domainId;
 	const char *type_name;
 	int retcode;
+	QString argvString;
+	int timer_interval;
 };
 
 #endif // PMD_GEN_DATASUPPLIER_H

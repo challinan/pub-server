@@ -23,6 +23,15 @@ PmdDatagen::PmdDatagen(QObject* parent): QObject(parent)
 	instance = NULL;
     instance_handle = HANDLE_NIL;
 
+	// Get interval from command line if present
+	timer_interval = 50; // Default value
+	if ( QCoreApplication::arguments().size() == 2 ) {
+		argvString = QCoreApplication::arguments().at(1);
+		printf("PmdDatagen::PmdDatagen(): interval = %s\n", 
+				argvString.toLatin1().data());
+		timer_interval = argvString.toInt();
+	}
+
 	// Create DDS participant
     participant = TheParticipantFactory->create_participant(
         domainId, PARTICIPANT_QOS_DEFAULT,
@@ -91,7 +100,7 @@ PmdDatagen::PmdDatagen(QObject* parent): QObject(parent)
 
 	timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateData()));
-    timer->setInterval(30);
+    timer->setInterval(timer_interval);
     timer->start();
 }
 
